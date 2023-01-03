@@ -1,0 +1,21 @@
+<header>
+  <h1>Kanban Board</h1>
+  <button class="header-btn" mat-button>+ Adicionar outro card</button>
+</header>
+<div class="cards">
+    <mat-card *ngFor="let card of cards">
+        <mat-card-header>
+          <mat-card-title>{{ card.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="list">
+            <div class="tasks" *ngFor="let task of card.list">
+              <p>{{task}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="card-btn" mat-raised-button>+ Adicionar outra tarefa</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
