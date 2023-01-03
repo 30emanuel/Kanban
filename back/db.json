@@ -1,0 +1,19 @@
+{
+  "kanban": [
+    {
+      "id": 1,
+      "title": "To Do",
+      "list": []
+    },
+    {
+      "id": 2,
+      "title": "Doing",
+      "list": []
+    },
+    {
+      "id": 3,
+      "title": "Done",
+      "list": []
+    }
+  ]
+}
