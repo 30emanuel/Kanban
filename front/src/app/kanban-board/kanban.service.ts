@@ -15,4 +15,13 @@ export class KanbanService {
   getCards(): Observable<Card[]>{
     return this.http.get<Card[]>(this.apiUrl)
   }
+
+  createCard(card: Card){
+    return this.http.post(this.apiUrl, card)
+  } 
+
+  deleteCard(id: any){
+    return this.http.delete<Card>(`${this.apiUrl}/${id}`)
+  }
+
 }

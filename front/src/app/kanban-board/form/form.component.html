@@ -1,0 +1,12 @@
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>Nome do Card</mat-label>
+        <input matInput [(ngModel)]="data.title">
+    </mat-form-field><br>
+        <mat-label>Cor</mat-label>
+        <input type="color" matInput [(ngModel)]="data.color">
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial style="background-color: green;">Confirmar</button>
+</div>

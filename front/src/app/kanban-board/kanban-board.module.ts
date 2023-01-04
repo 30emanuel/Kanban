@@ -3,22 +3,24 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BoardComponent } from './board/board.component';
 import { KanbanBoardRoutingModule } from './kanban-routing';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { KanbanService } from './kanban.service';
+import { MaterialModule } from '../material/material.module';
+import { FormComponent } from './form/form.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    BoardComponent
+    BoardComponent,
+    FormComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     KanbanBoardRoutingModule,
-    MatCardModule,
-    MatButtonModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [KanbanService]
 })
