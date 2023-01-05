@@ -34,13 +34,23 @@ mat-card-header{
     font-weight: bolder;
     color: white;
 }
-.tasks{
+mat-card-content{
+    min-height: 50px;
+}
+.task{
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
     padding: 5px;
     margin-top: 5px;
     border-radius: 5px;
     font-weight: 500;
-    color: black;
     background-color: white;
+}
+.task mat-icon{
+    color: black;
 }
 mat-icon{
     font-size: 20px;

@@ -5,22 +5,24 @@ import { BoardComponent } from './board/board.component';
 import { KanbanBoardRoutingModule } from './kanban-routing';
 import { KanbanService } from './kanban.service';
 import { MaterialModule } from '../material/material.module';
-import { FormComponent } from './form/form.component';
+import { FormCardComponent } from './form-card/form-card.component';
 import { FormsModule } from '@angular/forms';
+import { FormTaskComponent } from './form-task/form-task.component';
 
 
 
 @NgModule({
   declarations: [
     BoardComponent,
-    FormComponent,
+    FormCardComponent,
+    FormTaskComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     KanbanBoardRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [KanbanService]
 })

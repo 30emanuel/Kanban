@@ -1,6 +1,8 @@
+import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormComponent } from '../form/form.component';
+import { FormCardComponent } from '../form-card/form-card.component';
+import { FormTaskComponent } from '../form-task/form-task.component';
 import { KanbanService } from '../kanban.service';
 import { Card } from '../models/card.model';
 
@@ -34,7 +36,7 @@ export class BoardComponent implements OnInit {
       color: "",
       list: []
     }
-    const dialogRef = this.dialog.open(FormComponent, {
+    const dialogRef = this.dialog.open(FormCardComponent, {
       data: {title: card.title, color: card.color}
     })
 
@@ -56,4 +58,37 @@ export class BoardComponent implements OnInit {
     this.kanbanService.deleteCard(card.id).subscribe()
   }
 
+  createTask(card: Card){
+    let newTask: string
+    const dialogRef = this.dialog.open(FormTaskComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+        if(result){
+          newTask = result
+          card.list.push(newTask)
+          this.kanbanService.update(card).subscribe()
+        }
+    })
+  }
+
+  deleteTask(card: Card, i: number){
+    card.list.splice(i, 1)
+    this.kanbanService.update(card).subscribe()
+  }
+
+  drop(event: CdkDragDrop<string[]>){
+    let cardMoved = parseInt(event.container.id.replace(/\D/g, ''))
+    let currentCard = parseInt(event.previousContainer.id.replace(/\D/g, ''))
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
+      this.kanbanService.update(this.cards[currentCard]).subscribe()
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex)
+       this.kanbanService.update(this.cards[currentCard]).subscribe()
+       this.kanbanService.update(this.cards[cardMoved]).subscribe()
+    }
+  }
 }

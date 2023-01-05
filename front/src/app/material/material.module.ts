@@ -6,6 +6,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from '@angular/material/icon';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ],
   exports: [
     MatCardModule,
@@ -25,7 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ]
 })
 export class MaterialModule { }

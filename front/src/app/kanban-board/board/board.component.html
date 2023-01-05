@@ -2,23 +2,27 @@
   <h1>Kanban Board</h1>
   <button class="header-btn" mat-button (click)="newCard()">+ Adicionar outro card</button>
 </header>
-<div class="cards">
-    <mat-card *ngFor="let card of cards; let i = index" style="background-color: {{card.color}}">
+<div class="cards" cdkDropListGroup>
+    <mat-card *ngFor="let card of cards; let indexcard = index" style="background-color: {{card.color}}">
         <mat-card-header>
           <mat-card-title>{{ card.title }}</mat-card-title>
-          <button (click)="deleteCard(card, i)">
+          <button (click)="deleteCard(card, indexcard)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-card-header>
-        <mat-card-content>
-          <div class="list">
-            <div class="tasks" *ngFor="let task of card.list">
-              <p>{{task}}</p>
-            </div>
-          </div>
+        <mat-card-content  
+        cdkDropList
+        [cdkDropListData]="card.list"
+        (cdkDropListDropped)="drop($event)">
+              <div class="task" *ngFor="let task of card.list; let indextask = index" cdkDrag>
+                {{task}}
+                <button (click)="deleteTask(card, indextask)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
         </mat-card-content>
         <mat-card-actions>
-          <button class="card-btn" mat-raised-button>+ Adicionar outra tarefa</button>
+          <button class="card-btn" mat-raised-button (click)="createTask(card)">+ Adicionar outra tarefa</button>
         </mat-card-actions>
     </mat-card>
 </div>

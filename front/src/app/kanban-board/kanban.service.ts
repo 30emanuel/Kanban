@@ -24,4 +24,8 @@ export class KanbanService {
     return this.http.delete<Card>(`${this.apiUrl}/${id}`)
   }
 
+  update(card: any){
+    return this.http.put<Card>(`${this.apiUrl}/${card.id}/`, card)
+  }
+
 }

@@ -4,10 +4,10 @@ import { Card } from '../models/card.model';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  templateUrl: './form-card.component.html',
+  styleUrls: ['./form-card.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormCardComponent implements OnInit {
   
   data: Card = {
     title: "",
@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
   }
 
   constructor(
-    public dialogRef: MatDialogRef<FormComponent>,
+    public dialogRef: MatDialogRef<FormCardComponent>,
     @Inject(MAT_DIALOG_DATA) data: Card,
   ) {}
 
