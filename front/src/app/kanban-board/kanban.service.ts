@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Card } from './models/card.model';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class KanbanService {
 
   constructor(private http: HttpClient) { }
 
-  getCards(): Observable<Card[]>{
+  getCards(){
     return this.http.get<Card[]>(this.apiUrl)
   }
 

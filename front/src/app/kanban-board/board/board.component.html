@@ -3,7 +3,7 @@
   <button class="header-btn" mat-button (click)="newCard()">+ Adicionar outro card</button>
 </header>
 <div class="cards" cdkDropListGroup>
-    <mat-card *ngFor="let card of cards; let indexcard = index" style="background-color: {{card.color}}">
+    <mat-card *ngFor="let card of cards; let indexcard = index" [style.background-color]="card.color">
         <mat-card-header>
           <mat-card-title>{{ card.title }}</mat-card-title>
           <button (click)="deleteCard(card, indexcard)">

@@ -36,9 +36,7 @@ export class BoardComponent implements OnInit {
       color: "",
       list: []
     }
-    const dialogRef = this.dialog.open(FormCardComponent, {
-      data: {title: card.title, color: card.color}
-    })
+    const dialogRef = this.dialog.open(FormCardComponent)
 
     dialogRef.afterClosed().subscribe(
     (result: any) => {
