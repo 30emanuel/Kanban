@@ -17,13 +17,13 @@ export class KanbanService {
 
   createCard(card: Card){
     return this.http.post(this.apiUrl, card)
-  } 
+  }
 
   deleteCard(id: any){
     return this.http.delete<Card>(`${this.apiUrl}/${id}`)
   }
 
-  update(card: any){
+  update(card: Card){
     return this.http.put<Card>(`${this.apiUrl}/${card.id}/`, card)
   }
 

@@ -1,6 +1,7 @@
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormCardComponent } from '../form-card/form-card.component';
 import { FormTaskComponent } from '../form-task/form-task.component';
 import { KanbanService } from '../kanban.service';
@@ -18,6 +19,7 @@ export class BoardComponent implements OnInit {
   constructor(
     private kanbanService: KanbanService,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -26,8 +28,13 @@ export class BoardComponent implements OnInit {
 
   onRefresh(){
     this.kanbanService.getCards().subscribe(
-      res => this.cards = res
+      res => this.cards = res,
+      error => this.onError()
     )
+  }
+
+  onError(){
+    this.snackBar.open('Erro ao carregar cards.', '', {duration: 10000})
   }
 
   newCard(){
